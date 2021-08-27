@@ -94,15 +94,15 @@ ________
     ![Panoptic_seg](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Panoptic_Segm.png)
     
     - We train the DETR to get boxes around things & stuff.
-    - After decoder we will have one object embedding for each object as in below image (cow - thing, grass, trees, sky - stuff).
+    - After decoder we will have **one object embedding for each object** as in below image (cow - thing, grass, trees, sky - stuff).
     
     ![Decoder_op](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Decoder_Op.png)
     
-    - We will then use a multi-head attention over the encoded image to return the attention scores for each of the object embedding.
+    - We will then use a multi-head attention over the **encoded image** to return the **attention maps** for **each of the object embedding**.
     
     ![Attn_map_OE](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Attention_map_OE.png)
     
-    - Next, we will upsample these attention maps & clean the masks using intermediate activations we got from Resnet-50 backbone. 
+    - Next, we will upsample these **attention maps** & clean the masks using **intermediate activations we got from Resnet-50** backbone. 
     - We will get binary masks as a result.
     
     ![Binary_map](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Binary_Mask_Creation.png)
