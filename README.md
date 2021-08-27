@@ -41,15 +41,17 @@ ________
     - Overall panoptic segmentation architecture is as below. Details of each of these steps are as explained below
 
     ![Overall_Arch](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Overall_Panoptic_Arch.jpg)
-    - Get pre-trained ResNet-50. Strip out GAP & final layer.
-    - Pass the batch of images through ResNet-50 & get the encoded image from final conv layer.
+
     - Object detection using DETR network diagram is as below
 
     ![DETR_BB](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/DETR_BB_Architecture.png)
-
-    - Get the intermediate activations out of ResNet-50. Res-net 50 has a stride of 32. 
+    
+    - Now let us get into the details of panoptic segmentation approach.
+    - Get pre-trained ResNet-50. Strip out GAP & final layer.
+    - Pass the batch of images through ResNet-50.
+    - Get the **intermediate activations** out of ResNet-50. Res-net 50 has a stride of 32. 
     - For example, if we give a 480x480 image (min resolution required for DETR to work), we will get back 15x15x2048. This will be flattened to 225x256.
-    - Pass these activations along with positional encoding to encoder. Also set aside these activations, we will need these for binary map generation later.
+    - Pass these activations along with positional encoding to encoder. Also set aside these activations, we will need these for **binary map generation** later.
     - Positional encodings will be sine based.
     - Encoder-decoder architecture is as below.
     
