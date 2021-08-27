@@ -61,7 +61,7 @@ ________
     - Role of encoder is to separate the object instances by giving high attention scores to the pixels belonging to the same object. 
     - Encodings coming out of encoder will be similar to below.
     
-    ![Encodings](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Object_query_Results.png)
+    ![Encodings](https://github.com/anilbhatt1/Panoptic_Segmentation_DETR/blob/master/Readme_Images/Encoding_Results.png)
     
     - Decoder will have multiple layers. 
     - Last decoder layer helps us to find bounding box & class.
