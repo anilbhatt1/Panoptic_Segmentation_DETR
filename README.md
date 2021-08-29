@@ -59,16 +59,11 @@ ________
 	17) We will pass these images through DETR pretrained panoptic code to get masks for "stuff" and "misc_stuff".
 	18) Then with these masks we will get BB for these "stuff" and "misc_stuff".
 	19) Coco test dataset labels will already be having segmentation coordinates. Now, we have BB also from step 18.
-	20) Take dataset from 19 and combine it with dataset from 15.
-This will give us our final dataset. 
+	20) Take dataset from 19 and combine it with dataset from 15.This will give us our final dataset. 
 
 <!-- Approach -->
 ## Approach
 
--  Data Preparation
-    - Take the self-annotated data of construction materials. Format it to COCO dataset format.
-    - Add the stuff we take from Coco also. Add validation images from Coco to the annotated images.
-    - Modify the classes to include Coco stuff also.
 - Training
     - Overall panoptic segmentation architecture is as below. Details of each of these steps are as explained below
 
