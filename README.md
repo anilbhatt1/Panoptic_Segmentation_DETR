@@ -40,17 +40,22 @@ ________
 	4) It will also predict certain objects as "things" in our image. eg: Aeroplane. But these are not the "things" we are interested in.
 	5) So we will treat these predicted "things" as "misc_stuff" for our problem
 	6) Additionally, we have 2 problems:
-		a. Capstone "Things" in our image, could get detected and segmented as something else. Eg: Brick as suitcase. We want to avoid this
-		b. "Stuff" in our annotated dataset could be very limited. Our images are mainly focussed on construction sites. So background will be mostly similar. This will limit the ability of our panoptic model to identify "stuff" correctly
+		a. Capstone "Things" in our image, could get detected and segmented as something else. Eg: Brick as suitcase. We want to avoid 
+		this
+		b. "Stuff" in our annotated dataset could be very limited. Our images are mainly focussed on construction sites. So background 
+		will be mostly similar. This will limit the ability of our panoptic model to identify "stuff" correctly
 	7) To solve pblm (a), we will mask the objects we annotated from our original image and then pass this image to DETR panoptic network.
 	8) This means we are passing only images that has stuff and misc_stuff only to DETR pre-trained panoptic network.
 	9) Thus, DETR pre-trained output will give us masks and segmentation coordinates for "stuff" and "misc_stuff".
 	10) Images we annotated are having segmentation coordinates of "things" we are interested for this capstone.
-	11) Thus, we can combine segmentation coordinates from step 9 and step 10. This will give us segmentation coordinates for "stuff", "misc_stuff" and "things" corresponding to our original image.
+	11) Thus, we can combine segmentation coordinates from step 9 and step 10. This will give us segmentation coordinates for "stuff", 
+	"misc_stuff" and "things" corresponding to our original image.
 	12) Now, we can generate the bounding boxes for "stuff" and "misc_stuff" from the masks we got from step 9 via below code base.
 	https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html#contour-features
-	13) We can generate the bounding boxes for "things" from the step 7 images.  In step 7 where we masked our things to avoid mis-representation before passing to DETR pre-trained panoptic code.
-	14) We can combine BB from step 12 & step 13. This will give us BB coordinates for "stuff", "misc_stuff" and "things" corresponding to our original image.
+	13) We can generate the bounding boxes for "things" from the step 7 images.  In step 7 where we masked our things to avoid 
+	mis-representation before passing to DETR pre-trained panoptic code.
+	14) We can combine BB from step 12 & step 13. This will give us BB coordinates for "stuff", "misc_stuff" and "things" corresponding 
+	to our original image.
 	15) Thus from step 11 and step 14, we have below items for our dataset
 			i. Original image
 			ii. Stuff, Misc_Stuff & things as applicable in the image
@@ -59,7 +64,7 @@ ________
 	17) We will pass these images through DETR pretrained panoptic code to get masks for "stuff" and "misc_stuff".
 	18) Then with these masks we will get BB for these "stuff" and "misc_stuff".
 	19) Coco test dataset labels will already be having segmentation coordinates. Now, we have BB also from step 18.
-	20) Take dataset from 19 and combine it with dataset from 15.This will give us our final dataset. 
+	20) Take dataset from 19 and combine it with dataset from 15. This will give us our final dataset. 
 
 <!-- Approach -->
 ## Approach
